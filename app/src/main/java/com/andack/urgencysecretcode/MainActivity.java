@@ -9,12 +9,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.amap.api.location.AMapLocationClient;
+
 public class MainActivity extends CheckPermissionsActivity {
     private static final String TAG = "MainActivity";
     private Button accept_btn;
     private EditText sender_et;
     private EditText sendContent_et;
     private SharePreferencesTools sharePreferencesTools;
+    private AMapLocationClient locationClient=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
