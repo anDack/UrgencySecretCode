@@ -32,25 +32,9 @@ import android.content.SharedPreferences;
  */
 
 public class SharePreferencesTools {
-    private Context mContext;
-    public SharePreferencesTools(Context context)
-    {
-        this.mContext=context;
-    }
+   public static void createSharedPre(Context context)
+   {
+       SharedPreferences sharedPre=context.getSharedPreferences("data",Context.MODE_PRIVATE);
+   }
 
-    /**
-     * 是否有创建SharePreferences
-     * @return true 已经存在 false 不存在需要新建
-     */
-    public boolean isSharePre()
-    {
-        boolean isShare=false;
-        SharedPreferences sharedPreferences=mContext.getSharedPreferences("data",
-                Context.MODE_PRIVATE);
-        if(!sharedPreferences.getString("sender",null).equals(null))
-        {
-            isShare=true;
-        }
-        return  isShare;
-    }
 }

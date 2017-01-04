@@ -3,4 +3,5 @@
     <string name="sender">发送的对象：</string>
     <string name="send_content">发送的信息：</string>
     <string name="accept">确定：</string>
+    <string name="input_note">有东西没输入！</string>
 </resources>
