@@ -50,18 +50,18 @@ public class SharePreferencesTools {
      * 是否有创建SharePreferences
      * @return true 已经存在 false 不存在需要新建
      */
-    public boolean isSharedPre()
-    {
-        boolean isShare=false;
-        if(!sharedPreferences.getString("sender",null).equals(null))
-        {
-            isShare=true;
-        }
-        return  isShare;
-    }
+//    public boolean isSharedPre()
+//    {
+//        boolean isShare=false;
+//        if(!sharedPreferences.getString("sender",null).equals(null))
+//        {
+//            isShare=true;
+//        }
+//        return  isShare;
+//    }
 
     /**
-     * 用来重置数据
+     * 用来重置数据,没软用
      */
     public void restSharedPre()
     {
@@ -82,10 +82,10 @@ public class SharePreferencesTools {
         editor.putString("content",content);
         editor.commit();
     }
-    public String getSender()
-    {
-        String sender=sharedPreferences.getString("sender",null);
-        return sender;
-    }
+//    public String getSender()
+//    {
+//        String sender=sharedPreferences.getString("sender",null);
+//        return sender;
+//    }
 
 }

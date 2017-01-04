@@ -38,8 +38,7 @@ public class MainActivity extends AppCompatActivity {
         if (!sender.equals(null)&& !content.equals(null))
         {
             sharePreferencesTools.setSharedPre(sender,content);//设置sender和content
-
-            Log.i(TAG, "setData: "+ sharePreferencesTools.getSender());
+//            Log.i(TAG, "setData: "+ sharePreferencesTools.getSender());
         }else {
             Toast.makeText(MainActivity.this, R.string.input_note,Toast.LENGTH_SHORT).show();
         }
