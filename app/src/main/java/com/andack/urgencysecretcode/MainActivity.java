@@ -33,7 +33,15 @@ public class MainActivity extends CheckPermissionsActivity {
         });
 
     }
+    private void initLocation() {
+        //初始化client
+        locationClient=new AMapLocationClient(this.getApplicationContext());
+        //设置定位参数
+        locationClient.setLocationOption(LocationUtils.getLocationOption());
+        //设置定位监听
+//        locationClient.setLocationListener(locationListener);
 
+    }
     private void setData() {
         String sender=sender_et.getText().toString();
         String content=sendContent_et.getText().toString();

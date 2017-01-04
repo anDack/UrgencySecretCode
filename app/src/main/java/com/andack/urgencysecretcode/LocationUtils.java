@@ -35,7 +35,7 @@ import com.amap.api.location.AMapLocationClientOption;
 
 public class LocationUtils {
 
-    private static AMapLocationClientOption getLocationOption() {
+    static AMapLocationClientOption getLocationOption() {
         AMapLocationClientOption mOption=new AMapLocationClientOption();
         mOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
         mOption.setGpsFirst(false);
