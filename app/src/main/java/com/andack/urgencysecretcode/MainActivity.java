@@ -30,10 +30,10 @@ public class MainActivity extends CheckPermissionsActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        IntentFilter intentF=new IntentFilter();
-        intentF.addAction("SENT_SMS_ACTION");
-        sendSt=new SendStatus();
-        registerReceiver(sendSt,intentF);
+//        IntentFilter intentF=new IntentFilter();
+//        intentF.addAction("SENT_SMS_ACTION");
+//        sendSt=new SendStatus();
+//        registerReceiver(sendSt,intentF);
 
         sharePreferencesTools=new SharePreferencesTools(this);
         accept_btn.setOnClickListener(new View.OnClickListener() {

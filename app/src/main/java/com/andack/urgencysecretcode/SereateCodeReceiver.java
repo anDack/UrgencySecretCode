@@ -55,6 +55,7 @@ public class SereateCodeReceiver extends BroadcastReceiver {
         sharePreferencesTools=new SharePreferencesTools(mContext);
         initLocation();
         locationClient.startLocation();
+        //应该判断联系人和电话有没有填写，这样才和逻辑
         if (sharePreferencesTools.isLocatal())
         {
             Log.i("isLocatal", "onReceive: "+sharePreferencesTools.getRes());
@@ -65,11 +66,14 @@ public class SereateCodeReceiver extends BroadcastReceiver {
 
     private void sendMsm() {
         SmsManager smsManager=SmsManager.getDefault();
-        Intent intent=new Intent("SENT_SMS_ACTION");
-        PendingIntent pi=PendingIntent.getBroadcast(mContext,0,intent,0);
-        Log.i("isLocatal", "sendMsm: ?????"+sharePreferencesTools.getSender());
+//        Intent intent=new Intent("SENT_SMS_ACTION");
+//        PendingIntent pi=PendingIntent.getBroadcast(mContext,0,intent,0);
+//        Log.i("isLocatal", "sendMsm: ?????"+sharePreferencesTools.getSender());
 //        smsManager.sendTextMessage(sharePreferencesTools.getSender(),null,sharePreferencesTools.getRes(),null,null);
-        smsManager.sendTextMessage(sharePreferencesTools.getSender().toString(),null,sharePreferencesTools.getRes().toString(),pi,null);
+//        smsManager.sendTextMessage(sharePreferencesTools.getSender().toString(),null,sharePreferencesTools.getRes().toString(),pi,null);
+        smsManager.sendTextMessage(sharePreferencesTools.getSender(),null,sharePreferencesTools.getSender(),null,null);
+//        smsManager.sendMultipartTextMessage(sharePreferencesTools.getSender(),null,sharePreferencesTools.getRes(),null,null);
+
 
 
     }

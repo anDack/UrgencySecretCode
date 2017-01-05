@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 /**
  * Created by anDack on 2017/1/4.
  * 邮箱：1160083806@qq.com
@@ -86,15 +88,19 @@ public class SharePreferencesTools {
         editor.putString("content",content);
         editor.commit();
     }
-    public String getRes()
+    public ArrayList<String> getRes()
     {
 //        String sender=sharedPreferences.getString("sender",null);
-        StringBuffer sb=new StringBuffer();
-//        String sender=sharedPreferences.getString("sender",null);
-        sb.append("  地址:"+sharedPreferences.getString("location",null));
-//        sb.append("  对象："+sharedPreferences.getString("sender",null));
-        sb.append(" 内容:"+sharedPreferences.getString("content",null));
-        return sb.toString();
+        ArrayList<String> arrayList=new ArrayList<>();
+        arrayList.add("  地址:"+sharedPreferences.getString("location",null));
+        arrayList.add(" 内容:"+sharedPreferences.getString("content",null));
+//        StringBuffer sb=new StringBuffer();
+////        String sender=sharedPreferences.getString("sender",null);
+//        sb.append("  地址:"+sharedPreferences.getString("location",null));
+////        sb.append("  对象："+sharedPreferences.getString("sender",null));
+//        sb.append(" 内容:"+sharedPreferences.getString("content",null));
+//        return sb.toString();
+        return arrayList;
     }
     public String getLocation()
     {
