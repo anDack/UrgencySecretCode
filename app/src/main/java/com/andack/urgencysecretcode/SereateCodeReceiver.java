@@ -1,5 +1,6 @@
 package com.andack.urgencysecretcode;
 
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -64,8 +65,12 @@ public class SereateCodeReceiver extends BroadcastReceiver {
 
     private void sendMsm() {
         SmsManager smsManager=SmsManager.getDefault();
+        Intent intent=new Intent("SENT_SMS_ACTION");
+        PendingIntent pi=PendingIntent.getBroadcast(mContext,0,intent,0);
+        Log.i("isLocatal", "sendMsm: ?????"+sharePreferencesTools.getSender());
 //        smsManager.sendTextMessage(sharePreferencesTools.getSender(),null,sharePreferencesTools.getRes(),null,null);
-        smsManager.sendTextMessage(sharePreferencesTools.getSender(),null,sharePreferencesTools.getRes(),null,null);
+        smsManager.sendTextMessage(sharePreferencesTools.getSender().toString(),null,sharePreferencesTools.getRes().toString(),pi,null);
+
 
     }
 

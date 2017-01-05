@@ -1,5 +1,9 @@
 package com.andack.urgencysecretcode;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,12 +22,18 @@ public class MainActivity extends CheckPermissionsActivity {
     private Button accept_btn;
     private EditText sender_et;
     private EditText sendContent_et;
+    private SendStatus sendSt;
     private SharePreferencesTools sharePreferencesTools;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+        IntentFilter intentF=new IntentFilter();
+        intentF.addAction("SENT_SMS_ACTION");
+        sendSt=new SendStatus();
+        registerReceiver(sendSt,intentF);
 
         sharePreferencesTools=new SharePreferencesTools(this);
         accept_btn.setOnClickListener(new View.OnClickListener() {
@@ -33,6 +43,12 @@ public class MainActivity extends CheckPermissionsActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(sendSt);
     }
 
     private void setData() {
@@ -53,5 +69,17 @@ public class MainActivity extends CheckPermissionsActivity {
         accept_btn= (Button) findViewById(R.id.acceptBtn);
         sender_et= (EditText) findViewById(R.id.senderEd);
         sendContent_et= (EditText) findViewById(R.id.contentEd);
+    }
+    class SendStatus extends BroadcastReceiver{
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (getResultCode()==RESULT_OK)
+            {
+                Log.i(TAG, "onReceive: send is ok");
+            }else {
+                Log.i(TAG, "onReceive: fail to send");
+            }
+        }
     }
 }
