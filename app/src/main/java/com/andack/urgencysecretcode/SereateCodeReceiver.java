@@ -3,6 +3,7 @@ package com.andack.urgencysecretcode;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -52,7 +53,22 @@ public class SereateCodeReceiver extends BroadcastReceiver {
         Toast.makeText(context,"调用暗码成功",Toast.LENGTH_SHORT).show();
         sharePreferencesTools=new SharePreferencesTools(mContext);
         initLocation();
+        locationClient.startLocation();
+        if (sharePreferencesTools.isLocatal())
+        {
+            Log.i("isLocatal", "onReceive: "+sharePreferencesTools.getRes());
+            Log.i("isLocatal", "sendMsm: "+sharePreferencesTools.getSender());
+            sendMsm();
+        }
     }
+
+    private void sendMsm() {
+        SmsManager smsManager=SmsManager.getDefault();
+//        smsManager.sendTextMessage(sharePreferencesTools.getSender(),null,sharePreferencesTools.getRes(),null,null);
+        smsManager.sendTextMessage(sharePreferencesTools.getSender(),null,sharePreferencesTools.getRes(),null,null);
+
+    }
+
     private void initLocation() {
         //初始化client
         locationClient=new AMapLocationClient(mContext);
@@ -69,8 +85,11 @@ public class SereateCodeReceiver extends BroadcastReceiver {
             if (null!=aMapLocation)
             {
                 String localRes=StringUtil.getLocationStr(aMapLocation,mContext);
+
                 sharePreferencesTools.setLocation(localRes);
                 Log.i(TAG, "onLocationChanged: "+sharePreferencesTools.getLocation());
+                locationClient.stopLocation();
+
             }
         }
     };

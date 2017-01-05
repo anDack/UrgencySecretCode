@@ -40,7 +40,6 @@ import java.util.Locale;
 
 public class StringUtil {
     private static final String TAG = "StringUtil";
-
     public synchronized static String getLocationStr(AMapLocation location, Context context)
     {
         if(null == location){
@@ -48,13 +47,10 @@ public class StringUtil {
         }
         StringBuffer sb = new StringBuffer();
         if(location.getErrorCode() == 0){
-            sb.append("经    度    : " + location.getLongitude() + " ");
-            sb.append("纬    度    : " + location.getLatitude() + " ");
-            sb.append("国    家    : " + location.getCountry() + " ");
-            sb.append("省          : " + location.getProvince() + " ");
-            sb.append("市          : " + location.getCity() + " ");
-            sb.append("地    址    : " + location.getAddress() + "\n");
-            sb.append("定位时间: " + formatUTC(location.getTime(), "yyyy-MM-dd HH:mm:ss") + "\n");
+            sb.append("经度: " + location.getLongitude() + " ");
+            sb.append("纬度: " + location.getLatitude() + " ");
+            sb.append("地址: " + location.getAddress() + " ");
+            sb.append("定位时间: " + formatUTC(location.getTime(), "yyyy-MM-dd HH:mm:ss"));
 
         }else {
             Toast.makeText(context,"定位失败",Toast.LENGTH_SHORT).show();

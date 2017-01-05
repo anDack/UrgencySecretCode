@@ -62,6 +62,7 @@ public class SharePreferencesTools {
     public void setLocation(String location)
     {
         editor.putString("location",location);
+        editor.commit();
     }
     /**
      * 用来重置数据,没软用
@@ -89,17 +90,35 @@ public class SharePreferencesTools {
     {
 //        String sender=sharedPreferences.getString("sender",null);
         StringBuffer sb=new StringBuffer();
-        sb.append("sender is "+sharedPreferences.getString("sender",null));
-        sb.append("location is "+sharedPreferences.getString("location",null));
-        sb.append("content is "+sharedPreferences.getString("content",null));
+//        String sender=sharedPreferences.getString("sender",null);
+        sb.append("  地址:"+sharedPreferences.getString("location",null));
+//        sb.append("  对象："+sharedPreferences.getString("sender",null));
+        sb.append(" 内容:"+sharedPreferences.getString("content",null));
         return sb.toString();
     }
     public String getLocation()
     {
-        String sender=sharedPreferences.getString("location",null);
+        String location=sharedPreferences.getString("location",null);
+//        StringBuffer sb=new StringBuffer();
+//        sb.append("location is "+sharedPreferences.getString("location",null));
+        return location;
+    }
+    public String getSender()
+    {
+        String sender=sharedPreferences.getString("sender",null);
 //        StringBuffer sb=new StringBuffer();
 //        sb.append("location is "+sharedPreferences.getString("location",null));
         return sender;
+    }
+
+    public boolean isLocatal()
+    {
+        boolean isLocatal=false;
+        if(!sharedPreferences.getString("location",null).equals(null))
+        {
+            isLocatal=true;
+        }
+        return  isLocatal;
     }
 
 }
