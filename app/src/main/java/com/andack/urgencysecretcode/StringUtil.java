@@ -47,10 +47,10 @@ public class StringUtil {
         }
         StringBuffer sb = new StringBuffer();
         if(location.getErrorCode() == 0){
-            sb.append("经度: " + location.getLongitude() + " ");
-            sb.append("纬度: " + location.getLatitude() + " ");
+//            sb.append("经度: " + location.getLongitude() + " ");
+//            sb.append("纬度: " + location.getLatitude() + " ");
             sb.append("地址: " + location.getAddress() + " ");
-            sb.append("定位时间: " + formatUTC(location.getTime(), "yyyy-MM-dd HH:mm:ss"));
+//            sb.append("定位时间: " + formatUTC(location.getTime(), "yyyy-MM-dd HH:mm:ss"));
 
         }else {
             Toast.makeText(context,"定位失败",Toast.LENGTH_SHORT).show();

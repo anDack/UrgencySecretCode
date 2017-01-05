@@ -43,7 +43,6 @@ public class SharePreferencesTools {
     {
         this.mContext=context;
         this.sharedPreferences=mContext.getSharedPreferences("data",Context.MODE_PRIVATE);
-
         this.editor=sharedPreferences.edit();
         Log.i(TAG, "SharePreferencesTools: shareIs create");
     }
@@ -52,30 +51,30 @@ public class SharePreferencesTools {
      * 是否有创建SharePreferences
      * @return true 已经存在 false 不存在需要新建
      */
-//    public boolean isSharedPre()
-//    {
-//        boolean isShare=false;
-//        if(!sharedPreferences.getString("sender",null).equals(null))
-//        {
-//            isShare=true;
-//        }
-//        return  isShare;
-//    }
+    public boolean isSender()
+    {
+        boolean isSender=false;
+        if(!sharedPreferences.getString("sender",null).equals(null))
+        {
+            isSender=true;
+        }
+        return  isSender;
+    }
+    public boolean isContent()
+    {
+        boolean isContent=false;
+        if(!sharedPreferences.getString("content",null).equals(null))
+        {
+            isContent=true;
+        }
+        return  isContent;
+    }
     public void setLocation(String location)
     {
         editor.putString("location",location);
         editor.commit();
     }
-    /**
-     * 用来重置数据,没软用
-     */
-    public void restSharedPre()
-    {
 
-        editor.putString("sender",null);
-        editor.putString("content",null);
-        editor.commit();
-    }
 
     /**
      * 用来设置数据
@@ -88,19 +87,20 @@ public class SharePreferencesTools {
         editor.putString("content",content);
         editor.commit();
     }
-    public ArrayList<String> getRes()
+
+    public String getRes()
     {
 //        String sender=sharedPreferences.getString("sender",null);
-        ArrayList<String> arrayList=new ArrayList<>();
-        arrayList.add("  地址:"+sharedPreferences.getString("location",null));
-        arrayList.add(" 内容:"+sharedPreferences.getString("content",null));
-//        StringBuffer sb=new StringBuffer();
+//        ArrayList<String> arrayList=new ArrayList<>();
+//        arrayList.add("  地址:"+sharedPreferences.getString("location",null));
+//        arrayList.add(" 内容:"+sharedPreferences.getString("content",null));
+        StringBuffer sb=new StringBuffer();
 ////        String sender=sharedPreferences.getString("sender",null);
-//        sb.append("  地址:"+sharedPreferences.getString("location",null));
+        sb.append("地址:"+sharedPreferences.getString("location",null));
 ////        sb.append("  对象："+sharedPreferences.getString("sender",null));
 //        sb.append(" 内容:"+sharedPreferences.getString("content",null));
-//        return sb.toString();
-        return arrayList;
+        return sb.toString();
+//        return arrayList;
     }
     public String getLocation()
     {
@@ -117,14 +117,14 @@ public class SharePreferencesTools {
         return sender;
     }
 
-    public boolean isLocatal()
-    {
-        boolean isLocatal=false;
-        if(!sharedPreferences.getString("location",null).equals(null))
-        {
-            isLocatal=true;
-        }
-        return  isLocatal;
-    }
+//    public boolean isLocatal()
+//    {
+//        boolean isLocatal=false;
+//        if(!sharedPreferences.getString("location",null).equals(null))
+//        {
+//            isLocatal=true;
+//        }
+//        return  isLocatal;
+//    }
 
 }

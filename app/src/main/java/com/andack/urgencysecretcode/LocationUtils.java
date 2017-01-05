@@ -42,7 +42,7 @@ public class LocationUtils {
         mOption.setHttpTimeOut(30000);
         mOption.setInterval(2000);
         mOption.setNeedAddress(true);
-        mOption.setOnceLocation(false);
+        mOption.setOnceLocation(true);
         mOption.setOnceLocationLatest(false);
         AMapLocationClientOption.setLocationProtocol(AMapLocationClientOption.AMapLocationProtocol.HTTP);
         mOption.setSensorEnable(false);//可选，设置是否使用传感器。默认是false

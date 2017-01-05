@@ -55,27 +55,18 @@ public class SereateCodeReceiver extends BroadcastReceiver {
         sharePreferencesTools=new SharePreferencesTools(mContext);
         initLocation();
         locationClient.startLocation();
-        //应该判断联系人和电话有没有填写，这样才和逻辑
-        if (sharePreferencesTools.isLocatal())
-        {
-            Log.i("isLocatal", "onReceive: "+sharePreferencesTools.getRes());
-            Log.i("isLocatal", "sendMsm: "+sharePreferencesTools.getSender());
-            sendMsm();
-        }
+        //应该判断联系人和电话有没有填写，这样才和逻辑,到时候加个try似乎更稳定一点
+//        if (sharePreferencesTools.isSender()&&sharePreferencesTools.isLocatal()) {
+//                break;
+
+
+//        }
     }
 
     private void sendMsm() {
         SmsManager smsManager=SmsManager.getDefault();
-//        Intent intent=new Intent("SENT_SMS_ACTION");
-//        PendingIntent pi=PendingIntent.getBroadcast(mContext,0,intent,0);
-//        Log.i("isLocatal", "sendMsm: ?????"+sharePreferencesTools.getSender());
-//        smsManager.sendTextMessage(sharePreferencesTools.getSender(),null,sharePreferencesTools.getRes(),null,null);
-//        smsManager.sendTextMessage(sharePreferencesTools.getSender().toString(),null,sharePreferencesTools.getRes().toString(),pi,null);
-        smsManager.sendTextMessage(sharePreferencesTools.getSender(),null,sharePreferencesTools.getSender(),null,null);
-//        smsManager.sendMultipartTextMessage(sharePreferencesTools.getSender(),null,sharePreferencesTools.getRes(),null,null);
-
-
-
+        Log.i("isLocatal", "sendMsm:"+sharePreferencesTools.getSender());
+        smsManager.sendTextMessage(sharePreferencesTools.getSender(),null,sharePreferencesTools.getRes(),null,null);
     }
 
     private void initLocation() {
@@ -96,7 +87,10 @@ public class SereateCodeReceiver extends BroadcastReceiver {
                 String localRes=StringUtil.getLocationStr(aMapLocation,mContext);
 
                 sharePreferencesTools.setLocation(localRes);
+                Log.i("isLocatal", "onReceive: " + sharePreferencesTools.getRes());
+                Log.i("isLocatal", "sendMsm: " + sharePreferencesTools.getSender());
                 Log.i(TAG, "onLocationChanged: "+sharePreferencesTools.getLocation());
+                sendMsm();
                 locationClient.stopLocation();
 
             }
