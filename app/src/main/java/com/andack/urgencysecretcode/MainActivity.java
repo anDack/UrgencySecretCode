@@ -9,7 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationListener;
 
 public class MainActivity extends CheckPermissionsActivity {
     private static final String TAG = "MainActivity";
@@ -39,9 +41,20 @@ public class MainActivity extends CheckPermissionsActivity {
         //设置定位参数
         locationClient.setLocationOption(LocationUtils.getLocationOption());
         //设置定位监听
-//        locationClient.setLocationListener(locationListener);
+        locationClient.setLocationListener(locationListener);
 
     }
+    AMapLocationListener locationListener=new AMapLocationListener() {
+        @Override
+        public void onLocationChanged(AMapLocation aMapLocation) {
+            if (null!=aMapLocation)
+            {
+                String localRes=StringUtil.getLocationStr(aMapLocation,MainActivity.this);
+                sharePreferencesTools.setLocation(localRes);
+                Log.i(TAG, "onLocationChanged: "+sharePreferencesTools.getLocation());
+            }
+        }
+    };
     private void setData() {
         String sender=sender_et.getText().toString();
         String content=sendContent_et.getText().toString();

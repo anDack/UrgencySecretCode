@@ -59,7 +59,10 @@ public class SharePreferencesTools {
 //        }
 //        return  isShare;
 //    }
-
+    public void setLocation(String location)
+    {
+        editor.putString("location",location);
+    }
     /**
      * 用来重置数据,没软用
      */
@@ -82,10 +85,21 @@ public class SharePreferencesTools {
         editor.putString("content",content);
         editor.commit();
     }
-//    public String getSender()
-//    {
+    public String getRes()
+    {
 //        String sender=sharedPreferences.getString("sender",null);
-//        return sender;
-//    }
+        StringBuffer sb=new StringBuffer();
+        sb.append("sender is "+sharedPreferences.getString("sender",null));
+        sb.append("location is "+sharedPreferences.getString("location",null));
+        sb.append("content is "+sharedPreferences.getString("content",null));
+        return sb.toString();
+    }
+    public String getLocation()
+    {
+        String sender=sharedPreferences.getString("location",null);
+//        StringBuffer sb=new StringBuffer();
+//        sb.append("location is "+sharedPreferences.getString("location",null));
+        return sender;
+    }
 
 }
