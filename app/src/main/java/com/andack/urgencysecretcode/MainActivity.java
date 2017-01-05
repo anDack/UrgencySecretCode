@@ -48,7 +48,7 @@ public class MainActivity extends CheckPermissionsActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unregisterReceiver(sendSt);
+//        unregisterReceiver(sendSt);
     }
 
     private void setData() {

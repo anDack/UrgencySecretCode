@@ -96,9 +96,9 @@ public class SharePreferencesTools {
 //        arrayList.add(" 内容:"+sharedPreferences.getString("content",null));
         StringBuffer sb=new StringBuffer();
 ////        String sender=sharedPreferences.getString("sender",null);
-        sb.append("地址:"+sharedPreferences.getString("location",null));
-////        sb.append("  对象："+sharedPreferences.getString("sender",null));
-//        sb.append(" 内容:"+sharedPreferences.getString("content",null));
+        sb.append(sharedPreferences.getString("location",null));
+//         sb.append("  对象："+sharedPreferences.getString("sender",null));
+        sb.append(" 内容:"+sharedPreferences.getString("content",null));
         return sb.toString();
 //        return arrayList;
     }
