@@ -26,6 +26,7 @@ public class MainActivity extends CheckPermissionsActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+        initLocation();
         sharePreferencesTools=new SharePreferencesTools(this);
         accept_btn.setOnClickListener(new View.OnClickListener() {
             @Override
