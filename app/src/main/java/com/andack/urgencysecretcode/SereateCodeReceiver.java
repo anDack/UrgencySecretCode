@@ -1,6 +1,5 @@
 package com.andack.urgencysecretcode;
 
-import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -58,8 +57,6 @@ public class SereateCodeReceiver extends BroadcastReceiver {
         //应该判断联系人和电话有没有填写，这样才和逻辑,到时候加个try似乎更稳定一点
 //        if (sharePreferencesTools.isSender()&&sharePreferencesTools.isLocatal()) {
 //                break;
-
-
 //        }
     }
 

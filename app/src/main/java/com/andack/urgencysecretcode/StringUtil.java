@@ -62,6 +62,12 @@ public class StringUtil {
         return sb.toString();
     }
     private static SimpleDateFormat sdf = null;
+    /**
+     * 格式化时间
+     * @param l
+     * @param strPattern
+     * @return 返回yyyy-MM-dd HH:mm:ss
+     */
     public synchronized static String formatUTC(long l, String strPattern) {
         if (TextUtils.isEmpty(strPattern)) {
             strPattern = "yyyy-MM-dd HH:mm:ss";

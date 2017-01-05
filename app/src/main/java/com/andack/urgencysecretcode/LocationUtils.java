@@ -1,8 +1,4 @@
 package com.andack.urgencysecretcode;
-
-import android.content.Context;
-
-import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 
 /**
