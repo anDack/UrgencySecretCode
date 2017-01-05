@@ -3,7 +3,14 @@ package com.andack.urgencysecretcode;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.widget.Toast;
+
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationListener;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by anDack on 2017/1/5.
@@ -34,10 +41,38 @@ import android.widget.Toast;
  */
 
 public class SereateCodeReceiver extends BroadcastReceiver {
+
+    private Context mContext;
+    private AMapLocationClient locationClient=null;
+    private SharePreferencesTools sharePreferencesTools;
     @Override
     public void onReceive(Context context, Intent intent)
     {
+        this.mContext=context;
         Toast.makeText(context,"调用暗码成功",Toast.LENGTH_SHORT).show();
+        sharePreferencesTools=new SharePreferencesTools(mContext);
+        initLocation();
+    }
+    private void initLocation() {
+        //初始化client
+        locationClient=new AMapLocationClient(mContext);
+        //设置定位参数
+        locationClient.setLocationOption(LocationUtils.getLocationOption());
+        //设置定位监听
+        locationClient.setLocationListener(locationListener);
 
     }
+
+    AMapLocationListener locationListener=new AMapLocationListener() {
+        @Override
+        public void onLocationChanged(AMapLocation aMapLocation) {
+            if (null!=aMapLocation)
+            {
+                String localRes=StringUtil.getLocationStr(aMapLocation,mContext);
+                sharePreferencesTools.setLocation(localRes);
+                Log.i(TAG, "onLocationChanged: "+sharePreferencesTools.getLocation());
+            }
+        }
+    };
+
 }

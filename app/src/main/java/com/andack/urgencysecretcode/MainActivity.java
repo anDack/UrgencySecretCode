@@ -19,14 +19,12 @@ public class MainActivity extends CheckPermissionsActivity {
     private EditText sender_et;
     private EditText sendContent_et;
     private SharePreferencesTools sharePreferencesTools;
-    private AMapLocationClient locationClient=null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        initLocation();
+
         sharePreferencesTools=new SharePreferencesTools(this);
         accept_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,26 +34,7 @@ public class MainActivity extends CheckPermissionsActivity {
         });
 
     }
-    private void initLocation() {
-        //初始化client
-        locationClient=new AMapLocationClient(this.getApplicationContext());
-        //设置定位参数
-        locationClient.setLocationOption(LocationUtils.getLocationOption());
-        //设置定位监听
-        locationClient.setLocationListener(locationListener);
 
-    }
-    AMapLocationListener locationListener=new AMapLocationListener() {
-        @Override
-        public void onLocationChanged(AMapLocation aMapLocation) {
-            if (null!=aMapLocation)
-            {
-                String localRes=StringUtil.getLocationStr(aMapLocation,MainActivity.this);
-                sharePreferencesTools.setLocation(localRes);
-                Log.i(TAG, "onLocationChanged: "+sharePreferencesTools.getLocation());
-            }
-        }
-    };
     private void setData() {
         String sender=sender_et.getText().toString();
         String content=sendContent_et.getText().toString();
