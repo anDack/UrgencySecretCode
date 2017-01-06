@@ -84,8 +84,8 @@ public class SereateCodeReceiver extends BroadcastReceiver {
                 String localRes=StringUtil.getLocationStr(aMapLocation,mContext);
 
                 sharePreferencesTools.setLocation(localRes);
-                Log.i("isLocatal", "onReceive: " + sharePreferencesTools.getRes());
-                Log.i("isLocatal", "sendMsm: " + sharePreferencesTools.getSender());
+//                Log.i("isLocatal", "onReceive: " + sharePreferencesTools.getRes());
+//                Log.i("isLocatal", "sendMsm: " + sharePreferencesTools.getSender());
                 Log.i(TAG, "onLocationChanged: "+sharePreferencesTools.getLocation());
                 sendMsm();
                 locationClient.stopLocation();

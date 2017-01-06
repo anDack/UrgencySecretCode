@@ -47,28 +47,6 @@ public class SharePreferencesTools {
         Log.i(TAG, "SharePreferencesTools: shareIs create");
     }
 
-    /**
-     * 是否有创建SharePreferences
-     * @return true 已经存在 false 不存在需要新建
-     */
-    public boolean isSender()
-    {
-        boolean isSender=false;
-        if(!sharedPreferences.getString("sender",null).equals(null))
-        {
-            isSender=true;
-        }
-        return  isSender;
-    }
-    public boolean isContent()
-    {
-        boolean isContent=false;
-        if(!sharedPreferences.getString("content",null).equals(null))
-        {
-            isContent=true;
-        }
-        return  isContent;
-    }
     public void setLocation(String location)
     {
         editor.putString("location",location);
@@ -112,19 +90,8 @@ public class SharePreferencesTools {
     public String getSender()
     {
         String sender=sharedPreferences.getString("sender",null);
-//        StringBuffer sb=new StringBuffer();
-//        sb.append("location is "+sharedPreferences.getString("location",null));
         return sender;
     }
 
-//    public boolean isLocatal()
-//    {
-//        boolean isLocatal=false;
-//        if(!sharedPreferences.getString("location",null).equals(null))
-//        {
-//            isLocatal=true;
-//        }
-//        return  isLocatal;
-//    }
 
 }
