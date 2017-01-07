@@ -54,10 +54,6 @@ public class SereateCodeReceiver extends BroadcastReceiver {
         sharePreferencesTools=new SharePreferencesTools(mContext);
         initLocation();
         locationClient.startLocation();
-        //应该判断联系人和电话有没有填写，这样才和逻辑,到时候加个try似乎更稳定一点
-//        if (sharePreferencesTools.isSender()&&sharePreferencesTools.isLocatal()) {
-//                break;
-//        }
     }
 
     private void sendMsm() {
@@ -84,8 +80,6 @@ public class SereateCodeReceiver extends BroadcastReceiver {
                 String localRes=StringUtil.getLocationStr(aMapLocation,mContext);
 
                 sharePreferencesTools.setLocation(localRes);
-//                Log.i("isLocatal", "onReceive: " + sharePreferencesTools.getRes());
-//                Log.i("isLocatal", "sendMsm: " + sharePreferencesTools.getSender());
                 Log.i(TAG, "onLocationChanged: "+sharePreferencesTools.getLocation());
                 sendMsm();
                 locationClient.stopLocation();
