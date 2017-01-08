@@ -51,12 +51,14 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.myView
     public myViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view=inflater.inflate(R.layout.item,parent,false);
         myViewHolder holder=new myViewHolder(view);
+
         return holder;
     }
 
     @Override
     public void onBindViewHolder(myViewHolder holder, int position) {
         holder.tv.setText(mDatas.get(position));
+
     }
 
     @Override
@@ -68,6 +70,9 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.myView
         public myViewHolder(View itemView) {
             super(itemView);
             tv= (TextView) itemView.findViewById(R.id.itemTv);
+
         }
     }
+
+
 }

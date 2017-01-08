@@ -66,12 +66,14 @@ public class MainActivity extends CheckPermissionsActivity {
         recyclerAdapter Adapter =new recyclerAdapter(this,mData);
         recyclerView.setAdapter(Adapter);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+
     }
 
     public void setData(ArrayList<String> data) {
-        data.add("暗码1");
-        data.add("暗码2");
-        data.add("暗码3");
-        data.add("暗码4");
+        for (int i = 0; i < 100; i++) {
+            data.add("暗码: "+i);
+
+        }
+
     }
 }
